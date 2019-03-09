@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Bootstrap 4 Example</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+  <body>
+      <nav class="navbar navbar-inverse" style="height: 90px;background-color: black;">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <img src="https://console.cloudhiti.com/assets/img/brand/logo-cloudhiti.png" style="width:150px;height:40px;">
+            </div>
+          </div>
+        </nav>
+    <div class="container">
+      <div id="formContainer">
+          <form id="loginForm" (submit)="loginUser($event)">
+            <div class="row">
+                <div class="col-md-8 col-sm-8">
+                   <label style="margin-left: 47%;font-size: 21px;font-family: serif;font-weight: bold;">Portal Login </label> 
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-1 col-sm-2">
+                <button style="width: 40px;height: 38px;"><i class='fas fa-user-alt' style="font-size:15px"></i></button>
+              </div>
+              <div class="col-md-9 col-sm-4">
+                  <div class="form-group">
+                      <input type="email" class="form-control" [(ngModel)]="email" name="email" id="email" placeholder="Email Id" required>
+                      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                        <div *ngIf="name.errors.required">Name is required.</div>
+                        <!-- <div *ngIf="name.errors.minlength">Name must be at least 4 characters long.</div>
+                        <div *ngIf="name.errors.forbiddenName">Name cannot be Bob.</div> -->
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-1 col-sm-2">
+                  <button style="width: 40px;height: 38px;"><i class='fa fa-key' style="font-size:15px"></i></button>
+              </div>
+              <div class="col-md-9 col-sm-4">
+                <div class="form-group">
+                    <input type="password" class="form-control" [(ngModel)]="password" name="password" id="password" placeholder="Password" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-7" style="margin-left:26%">
+                <div class="form-group">
+                    <button class="btn btn-default" id="Loginbtn" (click)="Login()">Login</button>
+                </div>
+              </div>
+            </div>
+          </form>
+      </div>
+        
+    </div>
+      
+  </body>
+</html>
