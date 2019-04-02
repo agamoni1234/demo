@@ -1,0 +1,1 @@
+select sum(c.subtotal+c.sales_tax) Total_sale from firepieorders c where  date(c.scheduled_dt) BETWEEN  DATE_FORMAT(NOW() ,'%Y-%m-01') AND NOW()

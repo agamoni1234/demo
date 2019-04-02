@@ -1,0 +1,36 @@
+Running on http://localhost:3000
+Running on http://localhost:3000
+SELECT * FROM `users` where username = 'firepie'
+Running on http://localhost:3000
+Running on http://localhost:3000
+Running on http://localhost:3000
+host is *************localhost
+Running on http://localhost:3000
+events.js:183
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES 0.0.0.0:443
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at Server.setupListenHandle [as _listen2] (net.js:1338:19)
+    at listenInCluster (net.js:1396:12)
+    at doListen (net.js:1505:7)
+    at _combinedTickCallback (internal/process/next_tick.js:141:11)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+    at Function.Module.runMain (module.js:695:11)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:612:3
+host is *************localhost
+Running on http://localhost:3000
+In login route method...1....
+*******connection*****[object Object]
+SELECT * FROM `users` where username = 'firepie'
+In login route method...2....
+In login route method...3....
+In login route method...1....
+*******connection*****[object Object]
+SELECT * FROM `users` where username = 'firepie'
+In login route method...2....
+In login route method...3....
+request body is ************   [object Object]

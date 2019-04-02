@@ -1,0 +1,1 @@
+select HOUR( CONVERT_TZ(c.created_at,'+00:00','-7:00') )  order_hour , count(distinct c.id) order_cnt  from firepiedeliveries a join firepieget_swift_deliveries b on a.field_1 = b.field_2  join firepieorders c on a.field_12 = c.id where b.field_5 <> 'Cancelled' and date(CONVERT_TZ(c.created_at, '+00:00','-7:00'))  =  '%s'  group by 1 order by 1,2;

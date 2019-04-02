@@ -1,0 +1,208 @@
+<html>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <head>
+
+    <title>Document</title>
+
+    </head>
+
+    <script type="text/javascript" src="dataTables.scrollingPagination.js"></script>
+
+    <style>
+
+    body {
+        -moz-transform: scale(0.8, 0.8); /* Moz-browsers */
+        zoom: 0.8; /* Other non-webkit browsers */
+        zoom: 80%; /* Webkit browsers */
+    }
+
+
+
+
+
+    table.table-bordered.dataTable td {
+        font-size: 8px;
+    }
+
+    .portlet.light .dataTables_wrapper .dt-buttons {
+        margin-top: 0px;
+    }
+    .dataTables_wrapper .dt-buttons {
+        float: none;
+    }
+
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    .bar {
+        fill: orange;
+    }
+
+    .bar:hover {
+        fill: orangered ;
+    }
+
+    .axis--x path {
+        display: none;
+    }
+
+
+
+
+    .d3-tip {
+        line-height: 1;
+        font-weight: bold;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        border-radius: 2px;
+    }
+
+    /* Creates a small triangle extender for the tooltip */
+    .d3-tip:after {
+        box-sizing: border-box;
+        display: inline;
+        font-size: 10px;
+        width: 100%;
+        line-height: 1;
+        color: rgba(0, 0, 0, 0.8);
+        content: "\25BC";
+        position: absolute;
+        text-align: center;
+    }
+
+    /* Style northward tooltips differently */
+    .d3-tip.n:after {
+        margin: -1px 0 0 0;
+        top: 100%;
+        left: 0;
+    }
+
+    .dataTables_filter, .dataTables_info { display: none; }
+
+
+
+    /* .ngx-datepicker-container .ngx-datepicker-input  {
+        padding: 5px 10px;
+        font-size: 14px;
+        width: 145px !important;
+        outline: 0;
+        border: 1px solid #dfe3e9;
+    } */
+
+    :host /deep/ .ngx-datepicker-input{
+        /* border: 0.1px solid !important; */
+        width: 34% !important;
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+        margin-right: 1em !important;
+    }
+
+
+    .dataTables_wrapper .dataTables_length{
+        color: #333;
+        margin-left: 1em;
+    }
+
+    .dataTables_length #bestdriver_length{
+        display:none;
+    }
+
+    .dataTables_length #worstdriver_length{
+        display:none;
+    }
+
+    /* .highcharts-background {
+        margin-left: 2px !important;
+    } */
+
+
+
+
+    </style>
+
+    <body>
+
+        <div class="animated fadeIn" xmlns:padding-left="http://www.w3.org/1999/xhtml">
+            <div class="tab-content" style="border:0px solid">
+                <div id="menu2" class="tab-pane fade in active">
+
+                    <div class="row" style="margin-left: 18px;margin-top: -15px;">
+                        <div class="col-md-8" style="margin-top:-10px;margin-bottom:-10px;">
+                            <h2 class="page-title" style='color:#669999'>
+                                <i class="icon-users" style='color: #669999'></i> Microsoft PowerBI Integration with ClouDhiti!
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" style="margin-top:30px;">
+                        <div class="">
+                            <div class="row">
+
+                                <div class="card" class="col-sm-4 col-md-4">
+                                  <div class="shadow-lg p-3 mb-5 bg-white rounded" style="width: 90%">
+                                    <a href="pbi-demo-dashboard-1">
+                                      <img class="card-img-top" src="assets/img/brand/thumbnailrestaurant.png" alt="Card image cap">
+                                    </a>
+                                    <div class="card-body">
+                                      <h3 class="card-title">Gun Violence - Not Anymore!</h3>
+                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                  </div>
+                                </div>
+
+
+
+                                <div class="card" class="col-sm-4 col-md-4 ">
+                                  <div class="shadow-lg p-3 mb-5 bg-white rounded" style="width: 90%">
+                                    <a href="pbi-demo-dashboard-2">
+                                      <img class="card-img-top" src="assets/img/brand/thumbnailrestaurant.png" alt="Card image cap">
+                                    </a>
+                                    <div class="card-body">
+                                      <h3 class="card-title">Draught - Rain rain, come again!</h3>
+                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                  </div>
+                                </div>
+
+
+
+                                <!-- <div class="card" class="col-sm-4 col-md-4 ">
+                                  <div class="shadow-lg p-3 mb-5 bg-white rounded" style="width: 90%">
+                                    <a href="demo-dashboard-3">
+                                      <img class="card-img-top" src="assets/img/brand/thumbnailrestaurant.png" alt="Card image cap">
+                                    </a>
+                                    <div class="card-body">
+                                      <h3 class="card-title">CDR Dashboard</h3>
+                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                  </div>
+                                </div> -->
+
+
+                                <!-- <div class="card" class="col-sm-4 col-md-4 ">
+                                  <div class="shadow-lg p-3 mb-5 bg-white rounded" style="width: 90%">
+                                    <a href="demo-dashboard-4">
+                                      <img class="card-img-top" src="assets/img/brand/thumbnailrestaurant.png" alt="Card image cap">
+                                    </a>
+                                    <div class="card-body">
+                                      <h3 class="card-title">School Dashboard</h3>
+                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                  </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

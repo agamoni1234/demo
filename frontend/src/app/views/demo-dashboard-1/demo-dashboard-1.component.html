@@ -1,0 +1,457 @@
+<html>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<head>
+
+  <title>Document</title>
+
+</head>
+
+
+
+<script type="text/javascript" src="dataTables.scrollingPagination.js"></script>
+
+
+<style>
+
+  ::-webkit-scrollbar {
+        width: 7px !important;
+        height: 7px !important;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3) !important;
+        border-radius: 5px !important;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 5px !important;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5) !important;
+    }
+
+    @media screen and (max-width: 570px)
+    {
+        #titleTxt
+        {
+          font-size: 18px !important;
+        }
+
+        #headingTxt
+        {
+          margin-left:5% !important;
+        }
+
+    }
+
+/* #twitterchart .highcharts-root{
+
+    width:100%;
+} */
+
+#bubblechart {
+	min-width: 320px;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+
+/* body {
+    -moz-transform: scale(0.8, 0.8);
+    zoom: 0.8;
+    zoom: 80%;
+} */
+
+
+
+
+
+
+  table.table-bordered.dataTable td {
+    font-size: 8px;
+  }
+
+  .portlet.light .dataTables_wrapper .dt-buttons {
+    margin-top: 0px;
+  }
+  .dataTables_wrapper .dt-buttons {
+    float: none;
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  .bar {
+    fill: orange;
+  }
+
+  .bar:hover {
+    fill: orangered ;
+  }
+
+  .axis--x path {
+    display: none;
+  }
+
+
+
+
+  .d3-tip {
+    line-height: 1;
+    font-weight: bold;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 2px;
+  }
+
+  /* Creates a small triangle extender for the tooltip */
+  .d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+  }
+
+  /* Style northward tooltips differently */
+  .d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+  }
+
+.dataTables_filter, .dataTables_info { display: none; }
+
+
+
+/* .ngx-datepicker-container .ngx-datepicker-input  {
+    padding: 5px 10px;
+    font-size: 14px;
+    width: 145px !important;
+    outline: 0;
+    border: 1px solid #dfe3e9;
+} */
+
+:host /deep/ .ngx-datepicker-input{
+      /* border: 0.1px solid !important; */
+      width: 100% !important;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+    margin-right: 1em !important;
+}
+
+
+.dataTables_wrapper .dataTables_length{
+    color: #333;
+    margin-left: 1em;
+}
+
+.dataTables_length #bestdriver_length{
+    display:none;
+}
+
+.dataTables_length #worstdriver_length{
+    display:none;
+}
+  button {
+  background-color: #DCDCDC; /* Green */
+  border: 0.3px;
+  color: black;
+  /* padding: 15px 32px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+
+
+}
+@media only screen and (max-width: 600px) {
+  #datetimepicker1{
+    margin-left: 0px !important;
+  }
+  #comparison{
+    width: 100% !important;
+    margin-left: 0px !important;
+  }
+  #compbrand{
+
+    padding-top: 20px !important;
+  }
+  #piecompbrand{
+    padding-top: 20px !important;
+  }
+  #postalcolumn{
+    width: 100% !important;
+    margin-top: 20px !important;
+  }
+  #postalcolumnbrand1{
+    padding-top: 20px;
+
+  }
+  #selectpostal{
+    width: 200px !important;
+  }
+  #printbutton{
+    margin-left: 7% !important;
+    /* width: 100% !important; */
+  }
+  #emailbutton{
+    margin-left: 32% !important;
+    margin-top: -13% !important;
+  }
+}
+
+
+#ToUseHorizontalscroll1,#ToUseHorizontalscroll2, #ToUseHorizontalscroll3
+
+{
+  overflow: auto;
+  overflow-y: hidden;
+}
+
+
+</style>
+
+<body>
+        <div class="row">
+          <div id="headingTxt" class="col-md-12 col-sm-12 col-xs-12 col-lg-12 col-xl-12" style="margin-left:1%;">
+            <h2 id="titleTxt">Operation dashboard : Restuarant</h2>
+          </div>
+        </div>
+        <div class="row" id="cardsid1">
+          <div class="col-md-12">
+            <div class="col-md-2">
+              <div class="card text-white" style="background-color:#E14328;box-shadow: 1px 2px #696969;">
+                <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+
+                  <div class="text-value" style="font-size:18px;">5634</div>
+                  <div style="font-size:12px;">Total Orders </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card text-white" style="background-color:#F26851;box-shadow: 1px 2px #696969;">
+                <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+
+                  <div class="text-value" style="font-size:18px;">566</div>
+                  <div style="font-size:12px;">Total Drivers</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card text-white" style="background-color:#EA604E;box-shadow: 1px 2px #696969;">
+                <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+
+                  <div class="text-value" style="font-size:18px;">5112</div>
+                  <div style="font-size:12px;">Total Completed</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card text-white" style="background-color:#CF6D53;box-shadow: 1px 2px #696969;">
+                <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+
+                  <div class="text-value" style="font-size:18px;">522</div>
+
+                  <div style="font-size:12px;">Total Cancelled</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card text-white" style="background-color:#f5835d;box-shadow: 1px 2px #696969;">
+                <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+
+                  <div class="text-value" style="font-size:18px;">25.2</div>
+
+                  <div style="font-size:12px;">Avg. Preparation Time</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card text-white" style="background-color:#e25f34;box-shadow: 1px 2px #696969;">
+                <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+
+                  <div class="text-value" style="font-size:18px;">14.5</div>
+
+                  <div style="font-size:12px;">Avg. Delivery Time</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-8 col-sm-12 col-xs-12 col-lg-8 col-xl-8">
+              <div id="comparison">
+                <div class="brand-card" id="compbrand" style="padding:0.5px;">
+                  <div class="brand-card-header">
+                    <div class="caption caption-md" style="text-align:center;">
+                      <i class="icon-settings font-green"></i> <span class="caption-subject font-green bold uppercase"><b>
+                          Average
+                          Preparation,Delivery Time Per HOD </b> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date: {{date1}} to
+                        {{date2}} </span>
+                    </div>
+
+                    <div class="actions">
+                      <div class="form-group">
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="brand-card-body" style="height:350px;">
+                    <div id="chart6" style="overflow: hidden;" [chart]="chart6"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+              <div id="pie-comparison">
+                <div class="brand-card" id="piecompbrand">
+                  <div class="brand-card-header">
+                    <div class="caption caption-md" style="text-align:center;">
+                      <i class="icon-settings font-green"></i>
+                      <span class="caption-subject font-green bold uppercase"><b> Completed And Cancelled Orders </b>
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date: {{date1}} to {{date2}} </span>
+                    </div>
+                  </div>
+                  <div class="brand-card-body" style="height:350px;">
+                    <div style="overflow: hidden;" [chart]="chart5"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-12" style="margin-bottom:2%">
+                    <b> Select Choice </b>
+                    <select placeholder="select choice" style="height:34px;width:350px;" id="selectpostal" (change)="selectchoice1()"
+                      class="bs-select form-control" [(ngModel)]="choice1" name="choice1" required>
+                      <option>Total Completed Orders Based On Postal Code</option>
+                      <option>Total Cancelled Orders Based On Postal Code</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <div id="postalcolumn">
+                        <div class="brand-card" id="postalcolumnbrand1">
+                          <div class="brand-card-header">
+                            <div class="caption caption-md" style="text-align:center;">
+                              <i class="icon-settings font-green"></i> <span class="caption-subject font-green bold uppercase"><b>
+                                  {{choice1}} </b> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date: {{date1}} to {{date2}} </span>
+                            </div>
+                          </div>
+                          <div class="brand-card-body" style="height:350px;width:100%;">
+                            <div style="overflow: hidden;" [chart]="chart7"></div>
+                          </div>
+                        </div>
+                    </div>
+                    <div id="postalcolumn2" style="display: none;">
+                        <div class="brand-card">
+                          <div class="brand-card-header">
+                            <div class="caption caption-md" style="text-align:center;">
+                              <i class="icon-settings font-green"></i> <span class="caption-subject font-green bold uppercase"><b>
+                                  {{choice1}} </b> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date: {{date1}} to {{date2}} </span>
+                            </div>
+                          </div>
+                          <div class="brand-card-body" style="height:350px;width:100%;">
+                            <div style="overflow: hidden;" [chart]="chart8"></div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="col-md-12" style="margin-bottom:2%">
+                  <b> Select Choice </b>
+                  <select placeholder="select choice" style="height:34px;width:200px;" (change)="selectchoice2()"
+                    class="bs-select form-control" [(ngModel)]="choice2" name="choice2" required>
+                    <option>Top 5 Drivers</option>
+                    <option>Optimizable Drivers</option>
+                  </select>
+              </div>
+              <div class="col-md-12">
+                  <div id="printArea2">
+                      <div class="brand-card">
+                        <div class="brand-card-header">
+                          <div class="caption caption-md" style="text-align:center;">
+                            <i class="icon-settings font-green"></i>
+                            <span class="caption-subject font-green bold uppercase"><b> {{choice2}} </b>
+                              <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date: {{date1}} to {{date2}}</span>
+                          </div>
+                        </div>
+                        <div class="brand-card-body" style="height:350px;width:100%;" id="ToUseHorizontalscroll2">
+                          <table class="table table-bordered" id="bestdriver">
+
+                            <thead style="text-align: center;">
+                              <tr>
+                                <th style="text-align: center;">Driver Id</th>
+                                <!-- <th align="center">Driver Name</th> -->
+                                <th style="text-align: center;">Distance Covered (km)</th>
+                                <th style="text-align: center;">Time Taken (mins)</th>
+                                <th style="text-align: center;">Total Order Price</th>
+                                <th style="text-align: center;">Order Count</th>
+
+
+                              </tr>
+                            </thead>
+                            <tbody id="bestdriverbody">
+
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                  </div>
+                  <div id="printArea3" style="display: none;">
+                      <div class="brand-card">
+                        <div class="brand-card-header">
+                          <div class="caption caption-md" style="text-align:center;">
+                            <i class="icon-settings font-green"></i>
+                            <span class="caption-subject font-green bold uppercase"><b> Optimizable Drivers</b>
+                              <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date: {{date1}} to {{date2}}</span>
+                          </div>
+                        </div>
+                        <div class="brand-card-body" style="height:350px;width:100%; " id="ToUseHorizontalscroll3">
+                          <table class="table table-bordered" id="worstdriver">
+                            <thead style="text-align: center;">
+                              <tr>
+                                <th style="text-align: center;">Driver Id</th>
+                                <th style="text-align: center;">Distance Covered (km)</th>
+                                <th style="text-align: center;">Time Taken (mins)</th>
+                                <th style="text-align: center;">Total Order Price</th>
+                                <th style="text-align: center;">Order Count</th>
+                              </tr>
+                            </thead>
+                            <tbody id="worstdriverbody">
+
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                  </div>
+              </div>
+            </div>
+        </div>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,91 @@
+<style>
+
+    .half{
+
+      width:50%
+    }
+
+    </style>
+    <nav class="navbar navbar-expand-sm " style="height:80px;background-color: #000000">
+        <h1><img style="margin-left: 10%;width:150px; height: 40px;" class="login-logo" src='assets/img/brand/logo-cloudhiti.png' /> </h1>
+
+      </nav>
+
+    <div class="app-body">
+
+      <particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>
+      
+      <main class="main d-flex align-items-center">
+        <div class="container" >
+          <div class="row">
+              <div style="margin-left:10%;margin-top: 5%;">
+                <span>
+                    <h3>Welcome to ClouDhiti! Analytics for all</h3>
+                    <br>
+                    <h4>Business Insights as a Service!</h4>
+                    <br>
+                    <h6>For support, please write to results@cloudhiti.com </h6>
+                </span>
+              </div>
+            <div class="col-md-6 mx-auto" >
+                <div class="card-group" style="margin-left:30%;">
+                    <div class="card p-4" style="height:60%; box-shadow: 2px 2px;background-color: white">
+                      <div class="card-body">
+
+
+
+                        <h5>Login to your ClouDhiti account</h5>
+
+
+                        <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+
+                          <div class="input-group mb-3 ">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="icon-user"></i></span>
+                            </div>
+                            <input type="text" formControlName="username" placeholder="Username" class="form-control" [(ngModel)]="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                <div *ngIf="f.username.errors.required">User Name is required</div>
+                            </div>
+                          </div>
+
+                            <div class="input-group mb-3 ">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-lock"></i></span>
+                              </div>
+                              <input type="password" formControlName="password" placeholder="Password" class="form-control" [(ngModel)]="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                  <div *ngIf="f.password.errors.required">Password is required</div>
+                                  <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                              </div>
+                            </div>
+
+                          <div class="row" >
+                              <div class="col-6">
+                                <button class="btn btn-primary">Login</button>
+
+                              </div>
+                              <div class="col-6 text-right">
+                               <p style="margin-left: 3%;margin-top:5%;padding: 5px;"><a href="forgotpassword">Forgot password?</a></p>
+                              </div>
+
+                              <p style="margin-left: 3%;margin-top:5%;padding: 5px;"><a href="register">Create a ClouDhiti account</a></p>
+                              <p style="margin-left: 5%;font-size: 10px;">© 2019 ClouDhiti or its affiliates.All rights reserved.</p>
+                              <span  ><a style="margin-left: 20px;" href="#">Privacy Policy</a></span>
+                              <span  ><a style="margin-left: 10px;"  href="#" >Terms of Use</a> </span>
+                            </div>
+                        </form>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+            </div>
+          </div>
+        </div>
+      
+      </main>
+    </div>
+

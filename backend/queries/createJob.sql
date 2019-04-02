@@ -1,0 +1,1 @@
+INSERT INTO `job` (  `JobComment`, `JobName`, `Jobjson`, `status`, `jobType_id`, `source_id`, `Source_Type`, `target_id`, `Target_Type`, `user_id`) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s');

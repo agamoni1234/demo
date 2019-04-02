@@ -1,0 +1,1 @@
+update `users` set `temporary_uuid` = '' where `temporary_uuid` = '%s';

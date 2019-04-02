@@ -1,0 +1,1 @@
+select sum(c.subtotal+c.sales_tax) Total_sale from firepieorders c

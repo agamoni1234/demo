@@ -1,0 +1,170 @@
+
+table {
+  width: 100%;
+  text-align: center
+}
+
+agm-map{
+  height: 350px;
+}
+
+td, th {
+  border: 1px solid black;
+  text-align: center !important;
+  padding: 8px;
+}
+
+#sampledelivery_filter input {
+  border-radius: 0px !important
+}
+#sampledeliverylinkchart_filter input{
+  border-radius: 0px !important
+}
+
+#sampledelivery_length select {
+  border-radius: 0px !important
+}
+#sampledeliverylinkchart_length select {
+  border-radius: 0px !important
+}
+#sampledeliverylinkchart_filter input{
+  border: 1px solid #868584;
+  height: 30px;
+  width: 50%;
+
+}
+
+// tr:nth-child(even) {
+//   background-color: #dddddd;
+// }
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+.container #mapul li{
+  background: white;
+
+}
+
+// .container ul li{
+//   background: #595f68;
+
+// }
+// .container ul li a:hover{
+//   color: black;
+// }
+// .container ul li a{
+//   color: white;
+//   font-weight: bold;
+// }
+// .highcharts-xaxis-grid .highcharts-grid-line {
+//   stroke-width: 1px;
+//   stroke: black;
+// }
+
+// .highcharts-yaxis-grid .highcharts-grid-line {
+//   stroke-width: 1px;
+//   stroke: black;
+// }
+
+// .highcharts-xaxis .highcharts-tick {
+//   stroke-width: 2px;
+//   stroke: #d8d8d8;
+// }
+#sampledelivery_filter input{
+  border: 1px solid #868584;
+  height: 30px;
+  width: 50%;
+  border-radius: 4px;
+}
+#topmenu li a:hover{
+  // content: "";
+  // position: absolute;
+  // width: 50%;
+  // height: 1px;
+  // top: 0;
+  // left: 0%;
+  // border-top: 5px solid #006400 ;
+  color: #A0CCF2;
+  text-decoration: none;
+  padding-top: 5px;
+  border-top: 5px solid #8FB9C5;
+
+
+}
+
+.form-popup {
+  display: none;
+  position: fixed;
+  height:40%;
+  width:30%;
+  margin:0 auto;
+  bottom: 0;
+  right: 15px;
+  border: 2px solid #8EB1BB;
+  z-index: 1;
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  background-color: white;
+
+
+}
+
+@media only screen and (max-width: 400px) {
+  #visual1{
+    margin-top: 40px;
+    width: 100% !important;
+
+  }
+  #visual-4{
+    width: 100% !important;
+    padding-top: 10px !important;
+  }
+}
+
+// table.dataTable th,table.dataTable td {
+//   white-space: nowrap;
+//   }

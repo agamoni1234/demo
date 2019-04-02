@@ -1,0 +1,1 @@
+SELECT * FROM `servercredentials` where  id='%s';

@@ -1,0 +1,1 @@
+SELECT * FROM `servercredentials` where  user_id='%s' order by id desc ;

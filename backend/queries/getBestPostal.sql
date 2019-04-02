@@ -1,0 +1,1 @@
+select count(GetSwift_Job_Id),Destination_Postcode from getswift_api_deliveries_latest where STR_TO_DATE(created_local, '%Y-%m-%d') between '%s' and '%s' group by 2 order by 1 desc limit 10

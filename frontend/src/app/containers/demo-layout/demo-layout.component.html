@@ -1,0 +1,69 @@
+<!-- <app-header
+  [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/brand/logo-cloudhiti.png', width:150, height: 40, alt: 'ClouDhiti Logo'}"
+  [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'ClouDhiti Logo'}"
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="'lg'">
+  <ul class="nav navbar-nav ml-auto">
+    <li class="nav-item d-md-down-none">
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item" href="#logout"><i class="fa fa-lock"></i> Logout</a>
+      </div>
+    </li>
+  </ul>
+</app-header> -->
+<app-header
+  [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/brand/logo-cloudhiti.png', width:150, height: 40, alt: 'ClouDhiti Logo'}"
+  [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'ClouDhiti Logo'}"
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="'lg'">
+
+  <script>
+    console.log("HERE I AM");
+    $('.navbar-brand').attr('href','console');
+  </script>
+
+  <ul class="nav navbar-nav ml-auto">
+    <li class="nav-item d-md-down-none">
+
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="http://cloudhiti.wpengine.com/" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
+        <button mat-raised-button class="greeting-class">Hi, {{ username }}!</button>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item" href="#logout"><i class="fa fa-lock"></i> Logout</a>
+      </div>
+    </li>
+  </ul>
+</app-header>
+<div class="app-body">
+  <app-sidebar [fixed]="true" [display]="'lg'">
+    <app-sidebar-nav id="sidebar-navigation" [navItems]="navItems_Demo" [perfectScrollbar] [disabled]="sidebarMinimized"></app-sidebar-nav>
+    <app-sidebar-minimizer></app-sidebar-minimizer>
+  </app-sidebar>
+  <main class="main">
+    <ol class="breadcrumb">
+      <app-breadcrumb></app-breadcrumb>
+      <li class="breadcrumb-menu d-md-down-none">
+        <!-- <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        </div> -->
+      </li>
+    </ol>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
+<app-footer>
+  <span><a href="http://cloudhiti.wpengine.com/">Copyright</a> &copy; ClouDhiti 2018.</span>
+  <span style="margin-left: 5%;"><a href="https://www.facebook.com/pages/category/Computer-Company/ClouDhiti-260583514386288/">Facebook</a></span>
+  <span style="margin-left: 5%;"><a href="https://twitter.com/cloudhiti">Twitter</a> </span>
+  <span style="margin-left: 5%;"><a href="https://in.linkedin.com/company/cloudhiti">LinkedIn</a></span>
+  <span class="ml-auto">Powered by <a href="http://cloudhiti.wpengine.com/">ClouDhiti</a></span>
+</app-footer>

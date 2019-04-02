@@ -1,0 +1,38 @@
+{
+  "name": "clouldhiti",
+  "version": "1.0.0",
+  "description": "Node.js CloulDhiti",
+  "author": "vikash",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@agm/core": "^1.0.0-beta.5",
+    "@ng-bootstrap/ng-bootstrap": "^4.1.0",
+    "angular-highcharts": "^7.2.0",
+    "angular-moment": "^1.3.0",
+    "angular-tag-cloud-module": "^3.3.0",
+    "aws-sdk": "^2.419.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "d3-ng2-service": "^2.2.0",
+    "dotenv": "^5.0.1",
+    "execsql": "0.0.3",
+    "express": "^4.16.1",
+    "helmet": "^3.12.1",
+    "highcharts": "^7.0.3",
+    "intro.js": "^2.9.3",
+    "jquery": "^3.3.1",
+    "jsonwebtoken": "^8.2.1",
+    "moment": "^2.24.0",
+    "mysql": "^2.16.0",
+    "ng2-datepicker": "^3.1.1",
+    "ngx-bootstrap-modal": "^2.0.1",
+    "ngx-spinner": "^7.0.0",
+    "node-schedule": "^1.3.0",
+    "proxy-addr": "^2.0.4",
+    "sentiment": "^5.0.1",
+    "twitter": "^1.7.1"
+  }
+}

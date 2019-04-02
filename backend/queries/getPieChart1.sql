@@ -1,0 +1,1 @@
+select current_stage, count(*) as count from cloudhiti.getswift_api_deliveries_latest where STR_TO_DATE(created_local, '%Y-%m-%d') between '%s' and '%s' group by 1

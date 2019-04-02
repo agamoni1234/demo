@@ -1,0 +1,1 @@
+select count(distinct field_14, field_15)  from firepiecustomers

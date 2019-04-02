@@ -1,0 +1,1 @@
+select count(GetSwift_Job_Id) from cloudhiti.getswift_api_deliveries_latest where Current_Stage='Completed' and STR_TO_DATE(created_local, '%Y-%m-%d') between '%s' and '%s';

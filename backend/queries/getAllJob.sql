@@ -1,0 +1,1 @@
+SELECT * FROM `job` where  user_id='%s' order by id desc;

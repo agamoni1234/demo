@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CDR Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+
+    ::-webkit-scrollbar {
+        width: 7px !important;
+        height: 7px !important;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3) !important;
+        border-radius: 5px !important;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 5px !important;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5) !important;
+    }
+
+    @media screen and (max-width: 570px)
+    {
+        #headingtxt
+        {
+          font-size: 22px !important;
+        }
+
+    }
+
+</style>
+</head>
+
+<body>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 col-xl-12">
+                    <h2 id="headingtxt">CDR Analysis Dashboard</h2>
+            </div>
+        </div>
+
+        <div class="row" id="kpi-row">
+
+            <div class="col-md-2">
+                <div class="card text-white" style="background-color:#E14328;box-shadow: 1px 2px #696969;">
+                    <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+
+                        <div class="text-value" style="font-size:18px;">6328</div>
+                        <div style="font-size:12px;">Total Calls </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card text-white" style="background-color:#F26851;box-shadow: 1px 2px #696969;">
+                    <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+
+                        <div class="text-value" style="font-size:18px;">5695</div>
+                        <div style="font-size:12px;">Successful Calls</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card text-white" style="background-color:#EA604E;box-shadow: 1px 2px #696969;">
+                    <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+
+                        <div class="text-value" style="font-size:18px;">633</div>
+                        <div style="font-size:12px;">Dropped Calls</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card text-white" style="background-color:#CF6D53;box-shadow: 1px 2px #696969;">
+                    <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+
+                        <div class="text-value" style="font-size:18px;">10</div>
+
+                        <div style="font-size:12px;">Total Towers</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card text-white" style="background-color:#f5835d;box-shadow: 1px 2px #696969;">
+                    <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+
+                        <div class="text-value" style="font-size:18px;">8</div>
+
+                        <div style="font-size:12px;">Total Calling People</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card text-white" style="background-color:#e25f34;box-shadow: 1px 2px #696969;">
+                    <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+
+                        <div class="text-value" style="font-size:18px;">15</div>
+
+                        <div style="font-size:12px;">Total Called People</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="visual1" class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+                <div class="brand-card" style="padding:0.5px;">
+                    <div class="brand-card-header">
+                        <div class="caption caption-md" style="text-align:center;">
+                            <i class="icon-settings font-green"></i> <span
+                                class="caption-subject font-green bold uppercase"><b>Call-Type Chart</b>
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date: 05/05/2018 to 31/05/2018</span>
+                        </div>
+
+                        <div class="actions">
+                            <div class="form-group">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="brand-card-body" style="height:350px;">
+                        <div id="chart6" style="overflow: hidden;" [chart]="chart1"></div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="visual2" class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+                <div class="brand-card" style="width:100%;margin-right:-40px;padding: 0px;">
+                    <div class="brand-card-header">
+                        <div class="caption caption-md" style="text-align:center;">
+                            <i class="icon-settings font-green"></i>
+                            <span class="caption-subject font-green bold uppercase"><b> Top 8 Callers </b>
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date: 05/05/2018 to 31/05/2018</span>
+                        </div>
+                    </div>
+                    <div class="brand-card-body" style="height:350px;">
+                        <table class="table table-striped table-bordered dt-responsive nowrap" id="tablehome"
+                            style="display: none; width: 100%;border-spacing: 0px;margin-top: 9px;">
+                            <thead align="center">
+                                <tr>
+                                    <th style="text-align: center;">Calling Number</th>
+                                    <th style="text-align: center;">No. Of Calls</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablehomebody">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="visual3" class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+                <div class="brand-card" style="width:100%;margin-right:-40px;padding: 0.5px;">
+                    <div class="brand-card-header">
+                        <div class="caption caption-md" style="text-align:center;">
+                            <i class="icon-settings font-green"></i>
+                            <span class="caption-subject font-green bold uppercase"><b> Weekdays-Traffic Chart</b>
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date: 05/05/2018 to 31/05/2018</span>
+                        </div>
+                    </div>
+                    <div class="brand-card-body" style="height:350px;">
+                        <div style="overflow: hidden;" [chart]="chart2"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div id="visual-4" class="col-md-12 col-sm-12 col-xs-12 col-lg-12 col-xl-12"><!--style="width:100%;margin-left:-10px;"-->
+
+                <div class="brand-card" style="padding:0.5px;">
+                    <div class="brand-card-header">
+                        <div class="caption caption-md" style="text-align:center;">
+                            <i class="icon-settings font-green"></i> <span
+                                class="caption-subject font-green bold uppercase"><b> Average no. of calls per year for top
+                                    5 callers </b> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date: 05/05/2017 to
+                                05/05/2018</span>
+                        </div>
+
+                        <div class="actions">
+                            <div class="form-group">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="brand-card-body" style="height:350px;">
+                        <div id="chart6" style="overflow: hidden;" [chart]="chart3"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+</body>
+</html>

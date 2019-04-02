@@ -1,0 +1,703 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+
+  <script src="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.5/css/rowReorder.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
+
+
+  <style>
+
+  /* #sampledelivery_filter label input[type="search"] {
+      margin-right:50px;
+    } */
+
+
+    ::-webkit-scrollbar {
+        width: 7px !important;
+        height: 7px !important;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3) !important;
+        border-radius: 5px !important;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 5px !important;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5) !important;
+    }
+
+
+    @media screen and (max-width: 768px) and (min-width: 500px)
+    {
+      [_nghost-c3][_ngcontent-c1]
+      {
+        margin-left:16% !important;
+      }
+    }
+
+
+    @media screen and (max-width: 570px)
+    {
+        #datetimepicker1
+        {
+          display: none;
+        }
+
+        #sampledelivery_filter
+        {
+          margin-left:-45%;
+        }
+
+        .h2, h2
+        {
+          font-size: 22px !important;
+        }
+
+        .highcharts-title
+        {
+          font-size: 15px !important;
+        }
+
+        text
+        {
+          font-size: 15px !important;
+        }
+
+
+        #printbutton
+        {
+          margin-left: 74% !important;
+        }
+
+        label
+        {
+          margin-left: -196px !important;
+        }
+
+        .footerContaint
+        {
+          font-size: 11px !important;
+        }
+
+        .tspan
+        {
+          font-size: 12px !important;
+        }
+
+        [_nghost-c3]
+        {
+          overflow: auto !important;
+        }
+    }
+
+    [_nghost-c3]
+    {
+          overflow: auto !important;
+    }
+
+    #ToUseHorizontalscroll
+    {
+      overflow: auto;
+      overflow-y: hidden;
+    }
+
+
+    .select {
+      font-size: 16px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .select select {
+      outline: none;
+      -webkit-appearance: none;
+      display: block;
+      padding: 1.2em 3em 1.3em 1.5em;
+      margin: 0;
+
+      transition: border-color 0.2s;
+      border: 5px solid #33C7FF;
+      border-radius: 5px;
+
+      background: #fff;
+      color: #555;
+      line-height: normal;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    /* .select .arr {
+      background: #fff;
+      bottom: 2px;
+      position: absolute;
+      right: 2px;
+      top: 2px;
+      width: 30px;
+      pointer-events: none;
+    } */
+    /* .select .arr:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 24px;
+      margin-top: -5px;
+      pointer-events: none;
+      border-top: 10px solid #EB5168;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+    }
+
+    .select .arr:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 28px;
+      margin-top: -5px;
+      pointer-events: none;
+      border-top: 6px solid #fff;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+    }
+ */
+
+    agm-map {
+      height: 400px;
+      width:550px
+    }
+    angular-tag-cloud{
+      height: 400px;
+      width: 700px
+
+    }
+
+
+
+    #sampledelivery {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    #sampledelivery td, #sampledelivery th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    #sampledelivery tr:nth-child(even){background-color: #f2f2f2;}
+
+    #sampledelivery tr:hover {background-color: #ddd;}
+
+    #sampledelivery th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: center;
+      background-color:#cf6d53;
+      color: white;
+    }
+  </style>
+
+  <script src="https://code.highcharts.com/modules/wordcloud.js"></script>
+
+
+</head>
+
+
+<body>
+
+<!-- <ul id="topmenu" class="nav nav-tabs">
+        <li style="margin-left: 2px;height:40px;"><a data-toggle="tab" href="#twitterDashboard">Twitter Dashboard</a></li>
+        <li style="margin-left: 2px;height:40px;"><a data-toggle="tab" href="#polaris" >Polaris</a></li>
+     </ul> -->
+
+
+
+
+          <div class="tab-content scrollbar" id="style-7" style="border:0px solid">
+               <!-- This Below div is for Twitter Dashboard Section -->
+               <div id="twitterDashboard" class="tab-pane fade in active"><!--If it is active then only it will appear-->
+                  <!-- <div class="animated fadeIn" xmlns:padding-left="http://www.w3.org/1999/xhtml"> -->
+
+                    <div id="sentiment-analysis">
+                      <div class="row">
+                        <div class="col-md-9">
+                          <h2 class="page-title"><!-- margin-top:0px !important; margin-bottom:5px !important; -->
+                            <i class="icon-users"></i> Human Trafficking Sentiment Analysis-(Twitter)
+                          </h2>
+                        </div>
+                        <div class="col-md-2" id="datetimepicker1" style="margin-left:20px;padding: 20px;">
+                          <b>Date : </b>{{timestamp}}
+                          <!-- <ng-datepicker  [options]="calendarOptions" id="dpicker"  name="date"(ngModelChange)="storefromdate($event)" ></ng-datepicker> -->
+                        </div>
+                      </div>
+                      
+                      <div id="kpi-row" class="row">
+                        <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3 col-xl-3">
+                          <div class="card text-white" style="background-color:#E14328;box-shadow: 1px 2px #696969;">
+                            <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+                              <div class="text-value" style="font-size:18px;">50</div>
+                              <div style="font-size:12px;">Total Tweets </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3 col-xl-3">
+                          <div class="card text-white" style="background-color:#F26851;box-shadow: 1px 2px #696969;">
+                            <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+                              <div class="text-value" style="font-size:18px;">40</div>
+                              <div style="font-size:12px;">Negative Tweet Count</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3 col-xl-3">
+                          <div class="card text-white" style="background-color:#EA604E;box-shadow: 1px 2px #696969;">
+                            <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+
+                              <div class="text-value" style="font-size:18px;">4</div>
+                              <div style="font-size:12px;">Neutral Tweet Count</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3 col-xl-3">
+                          <div class="card text-white" style="background-color:#CF6D53;box-shadow: 1px 2px #696969;">
+                            <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+
+                              <div class="text-value" style="font-size:18px;">6</div>
+                              <div style="font-size:12px;">Positive Tweet count </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div id="sec1-row2-vis1" class="col-md-5 col-sm-12 col-xs-12 col-lg-5 col-xl-5">
+                          <div class="brand-card" style="padding:0.5px;">
+                            <div class="brand-card-header">
+                              <div class="caption caption-md" style="text-align:center;">
+                                <i class="icon-settings font-green"></i> <span class="caption-subject font-green bold uppercase"><b> Most Popular Keywords Tweeted</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}} </span>
+                              </div>
+                              <div class="actions">
+                                <div class="form-group">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="brand-card-body" style="height:317px;width: 100%;">
+                              <!-- <div> -->
+                                <angular-tag-cloud [data]="data2" [overflow]="options.overflow" [zoomOnHover]="{ scale: 2, transitionTime: 0.4, delay: 0 }" style="width:100%; height:100%;">
+                                </angular-tag-cloud>
+                              <!-- </div> -->
+                            </div>
+                          </div>
+                        </div>
+                        <div id="sec1-row2-vis2" class="col-md-3 col-sm-12 col-xs-12 col-lg-3 col-xl-3">
+                          <div class="brand-card" style="width:100%;padding: 0.5px;">
+                            <div class="brand-card-header">
+                              <div class="caption caption-md" style="text-align:center;">
+                                <i class="icon-settings font-green"></i>
+                                <span class="caption-subject font-green bold uppercase"><b> Sentiment Analysis </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}}</span>
+                              </div>
+                            </div>
+                            <div class="brand-card-body" style="height:317px;width: 100%;">
+                              <div style="overflow: hidden;" [chart]="chart2"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="sec1-row2-vis3" class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+                          <div class="brand-card" style="width:100%;padding: 0.5px;">
+                            <div class="brand-card-header">
+                              <div class="caption caption-md" style="text-align:center;">
+                                <i class="icon-settings font-green"></i>
+                                <span class="caption-subject font-green bold uppercase"><b> Most Popular Twitter Handles </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}}</span>
+                              </div>
+                            </div>
+                            <div class="brand-card-body" style="height:317px;">
+                              <div style="overflow: hidden;" [chart]="columnchart2"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="tweetbody" id="tweetbody" style="width:100%;">
+                          <div class="col-md-12">
+                            <div class="card text-white" style="background-color:#F26851;box-shadow: 1px 2px #696969;">
+                              <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+                                <div class="tweet" id="tweet">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div id="sec1-row3-vis1" class="row">
+                        <div class="col-md-12" id="printArea" >
+                          <div class="brand-card">
+                              <div class="brand-card-header" style="margin-bottom: -15px !important;">
+                              <div class="caption caption-md" style="text-align:center;">
+                                <i class="icon-settings font-green"></i>
+                                <span  class="caption-subject font-green bold uppercase"><b id="toptwitterhandletxt">Top Twitter Handles </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}}</span>
+                              </div>
+                            </div>
+                            <div class="col-md-1" id="printbutton" style="margin-left:92%;margin-top:-3%;">
+                              <button id="dataTablePrintBtn" type="button" class="btn btn-default" (click)="printDiv()"><b>Print</b></button>
+                            </div>
+                            <div class="brand-card-body" id="ToUseHorizontalscroll">
+
+                              <table class="table table-bordered" id="sampledelivery" style="border-spacing: 0px;">
+                                <thead align="center">
+                                  <tr>
+                                    <th align="center" style="width:65% !important;">Tweet</th>
+                                    <th align="center" style="width:15% !important;">Twitter Handle</th>
+                                    <th align="center" style="width:20% !important;">Timestamp</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="sampledeliverybody">
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div id="growing-awareness">
+                      <div class="row" style="margin-top:10px;">
+                        <div class="col-md-8">
+                          <h2 class="page-title" style='color:black;'>
+                            <i class="icon-users" style='color:black'></i> Growing Awareness. Growing Impact.
+                          </h2>
+                        </div>
+                      </div>
+                      <div id="kpi-row-sec2" class="row">
+                          <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3 col-xl-3">
+                            <div class="card text-white" style="background-color:#E14328;box-shadow: 1px 2px #696969;">
+                              <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+                                <div class="text-value" style="font-size:18px;">10,615</div>
+                                <div style="font-size:12px;">INDIVIDUAL VICTIMS </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3 col-xl-3">
+                            <div class="card text-white" style="background-color:#F26851;box-shadow: 1px 2px #696969;">
+                              <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+                                <div class="text-value" style="font-size:18px;">8,759</div>
+                                <div style="font-size:12px;">HUMAN TRAFFICKING CASES</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3 col-xl-3">
+                            <div class="card text-white" style="background-color:#EA604E;box-shadow: 1px 2px #696969;">
+                              <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+                                <div class="text-value" style="font-size:18px;">4,863</div>
+                                <div style="font-size:12px;">POTENTIAL TRAFFICKERS</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3 col-xl-3">
+                            <div class="card text-white" style="background-color:#CF6D53;box-shadow: 1px 2px #696969;">
+                              <div class="card-body pb-0" style="padding: 10px !important;text-align: center;">
+                                <div class="text-value" style="font-size:18px;">1,698</div>
+                                <div style="font-size:12px;">TRAFFICKING BUSINESSES</div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+
+
+                      <!-- START of First Row in the Polaris tab  -->
+                      <div class="row">
+                          <div id="sec2-row2-vis1" class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+                                  <div class="brand-card" style="padding:0.5px;">
+                                      <div class="brand-card-header">
+                                          <div class="caption caption-md" style="text-align:center;">
+                                              <i class="icon-settings font-green"></i>
+                                              <span class="caption-subject font-green bold uppercase">
+                                                  <b>Sex Trafficking </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}}
+                                                  <!-- Date: -->
+                                              </span>
+                                          </div>
+                                          <div class="actions">
+                                              <div class="form-group">
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="brand-card-body" style="height:350px;">
+                                          <div id="chart6" style="overflow: hidden;" [chart]="chartSexTrafficking"></div>
+                                      </div>
+                                  </div>
+                          </div>
+                          <div id="sec2-row2-vis2" class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+                                <div class="brand-card" style="padding:0.5px;">
+                                    <div class="brand-card-header">
+                                        <div class="caption caption-md" style="text-align:center;">
+                                            <i class="icon-settings font-green"></i>
+                                            <span class="caption-subject font-green bold uppercase">
+                                                <b>Sex And Labor Trafficking </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}}
+                                                <!-- Date: -->
+                                            </span>
+                                        </div>
+                                        <div class="actions">
+                                            <div class="form-group">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="brand-card-body" style="height:350px;">
+                                        <div id="chart6" style="overflow: hidden;" [chart]="chartSexAndLaborTrafficking"></div>
+                                    </div>
+                                </div>
+                          </div>
+                          <div id="sec2-row2-vis3" class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+                                  <div class="brand-card" style="padding:0.5px;">
+                                      <div class="brand-card-header">
+                                          <div class="caption caption-md" style="text-align:center;">
+                                              <i class="icon-settings font-green"></i>
+                                              <span class="caption-subject font-green bold uppercase">
+                                                  <b>Labor Trafficking </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}}
+                                                  <!-- Date: -->
+                                              </span>
+                                          </div>
+                                          <div class="actions">
+                                              <div class="form-group">
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="brand-card-body" style="height:350px;">
+                                          <div id="chart6" style="overflow: hidden;" [chart]="chartLaborTrafficking"></div>
+                                      </div>
+                                  </div>
+                          </div>
+                      </div>
+                      <!-- END of First Row in the Polaris tab  -->
+
+                      <!-- START of Second Row in the Polaris tab  -->
+                      <div class="row">
+                          <div id="sec2-row3-vis1" class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+                              <div class="brand-card" style="padding:0.5px;">
+                                  <div class="brand-card-header">
+                                      <div class="caption caption-md" style="text-align:center;">
+                                          <i class="icon-settings font-green"></i>
+                                          <span class="caption-subject font-green bold uppercase">
+                                              <b>National Human Trafficking Hotline Cases </b> <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}}
+                                              <!-- Date: -->
+                                          </span>
+                                      </div>
+                                      <div class="actions">
+                                          <div class="form-group">
+
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="brand-card-body" style="height:350px;">
+                                      <div id="chart6" style="overflow: hidden;" [chart]="chartNationalHumanTraffickingHotlineCases"></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div id="sec2-row3-vis2" class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+                              <div class="brand-card" style="padding:0.5px;">
+                                  <div class="brand-card-header">
+                                      <div class="caption caption-md" style="text-align:center;">
+                                          <i class="icon-settings font-green"></i>
+                                          <span class="caption-subject font-green bold uppercase">
+                                              <b>Forms of Human Trafficking 2017</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}}
+                                              <!-- Date: -->
+                                          </span>
+                                      </div>
+                                      <div class="actions">
+                                          <div class="form-group">
+
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="brand-card-body" style="height:350px;">
+                                      <div id="chart6" style="overflow: hidden;" [chart]="chartFormsOfHumanTrafficking"></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div id="sec2-row3-vis3" class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+                            <div class="brand-card" style="padding:0.5px;">
+                                <div class="brand-card-header">
+                                    <div class="caption caption-md" style="text-align:center;">
+                                        <i class="icon-settings font-green"></i>
+                                        <span class="caption-subject font-green bold uppercase">
+                                            <b>Survivors Who Contacted The Hotline Directly By Year </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}}
+                                        </span>
+                                    </div>
+                                    <div class="actions">
+                                        <div class="form-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="brand-card-body" style="height:350px;">
+                                    <div id="chart6" style="overflow: hidden;" [chart]="chartSurvivorsWhoContactedTheHotlineDirectlyByYear"></div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div id="survivors-human-trafficking">
+                      <div class="row">
+                        <div class="col-md-8">
+                          <h2 class="page-title" style='color:black;'>
+                            <i class="icon-users" style='color:black'></i> Who are the Survivors of Human Trafficking ?
+                          </h2>
+                        </div>
+                      </div>
+                      <!-- START of Third Row in the Polaris tab  -->
+                      <div class="row">
+                          <div id="sec3-row2-vis1" class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+                            <div class="brand-card" style="padding:0.5px;">
+                                <div class="brand-card-header">
+                                    <div class="caption caption-md" style="text-align:center;">
+                                        <i class="icon-settings font-green"></i>
+                                        <span class="caption-subject font-green bold uppercase">
+                                            <b>Age</b> <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}}
+                                            <!-- Date: -->
+                                        </span>
+                                    </div>
+                                    <div class="actions">
+                                        <div class="form-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="brand-card-body" style="height:350px;">
+                                    <div id="chart6" style="overflow: hidden;" [chart]="chartSurvivorAge"></div>
+                                </div>
+                            </div>
+                          </div>
+                          <div id="sec3-row2-vis2" class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+                            <div class="brand-card" style="padding:0.5px;">
+                                <div class="brand-card-header">
+                                    <div class="caption caption-md" style="text-align:center;">
+                                        <i class="icon-settings font-green"></i>
+                                        <span class="caption-subject font-green bold uppercase">
+                                            <b>Gender</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}}
+                                            <!-- Date: -->
+                                        </span>
+                                    </div>
+                                    <div class="actions">
+                                        <div class="form-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="brand-card-body" style="height:350px;">
+                                    <div id="chart6" style="overflow: hidden;" [chart]="chartSurvivorGender"></div>
+                                </div>
+                            </div>
+                          </div>
+                          <div id="sec3-row2-vis3" class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+                              <div class="brand-card" style="padding:0.5px;">
+                                  <div class="brand-card-header">
+                                      <div class="caption caption-md" style="text-align:center;">
+                                          <i class="icon-settings font-green"></i>
+                                          <span class="caption-subject font-green bold uppercase">
+                                              <b>Top 5 Reported Race/Ethnicity</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}}
+                                              <!-- Date: -->
+                                          </span>
+                                      </div>
+                                      <div class="actions">
+                                          <div class="form-group">
+
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="brand-card-body" style="height:350px;">
+                                      <div id="chart6" style="overflow: hidden;" [chart]="chartTop5ReportedRaceOrEthnicity"></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- END of Third Row in the Polaris tab  -->
+
+                      <!-- START of Fourth Row in the Polaris tab  -->
+                      <div class="row">
+                          <div id="sec3-row3-vis1" class="col-md-4 col-sm-12 col-xs-12 col-lg-4 col-xl-4">
+                            <div class="brand-card" style="padding:0.5px;">
+                                <div class="brand-card-header">
+                                    <div class="caption caption-md" style="text-align:center;">
+                                        <i class="icon-settings font-green"></i>
+                                        <span class="caption-subject font-green bold uppercase">
+                                            <b>Individual Victims Of Human Trafficking</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}}
+                                            <!-- Date: -->
+                                        </span>
+                                    </div>
+                                    <div class="actions">
+                                        <div class="form-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="brand-card-body" style="height:350px;">
+                                    <div id="chart6" style="overflow: hidden;" [chart]="chartIndividualVictimsOfHumanTrafficking"></div>
+                                </div>
+                            </div>
+                          </div>
+                          <div id="sec3-row3-vis2" class="col-md-8 col-sm-12 col-xs-12 col-lg-8 col-xl-8">
+                                  <div class="brand-card" style="padding:0.5px;">
+                                      <div class="brand-card-header">
+                                          <div class="caption caption-md" style="text-align:center;">
+                                              <i class="icon-settings font-green"></i>
+                                              <span class="caption-subject font-green bold uppercase">
+                                                  <b>Age at Time Sex or Labor Trafficking Began</b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;{{timestamp}}
+                                                  <!-- Date: -->
+                                              </span>
+                                          </div>
+                                          <div class="actions">
+                                              <div class="form-group">
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="brand-card-body" style="height:350px;">
+                                          <div id="chart6" style="overflow: hidden;" [chart]="chartAgeAtTimeSexOrLaborTraffickingBegan"></div>
+                                      </div>
+                                  </div>
+                          </div>
+                      </div>
+                      <!-- END of Fourth Row in the Polaris tab  -->
+
+
+
+                      <div class="row">
+                          <div id="container" ></div>
+                      </div>
+                    </div>
+
+               </div>
+
+
+
+           </div>
+
+
+
+
+</body>
+
+</html>

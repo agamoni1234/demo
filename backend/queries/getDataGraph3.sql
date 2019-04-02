@@ -1,0 +1,1 @@
+select count(source),source from firepieorders where source='chow_now' or source='grubhub' or source='eat_24' group by source;

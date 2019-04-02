@@ -1,0 +1,40 @@
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles
+@import "node_modules/@coreui/coreui/scss/coreui";
+
+// If you want to add something do it here
+@import "custom";
+
+
+.navbar-brand-full
+{
+	margin-left: 12px !important;
+}
+
+
+.app-header {
+
+    background-color: black !important;
+    border-bottom: none;
+}
+
+.sidebar {
+    background: #000 !important;
+}
+
+.app-header .nav-item .nav-link > .img-avatar, .app-header .nav-item .avatar.nav-link > img {
+    margin: 1px 0 10px  !important;
+}
+
+tree-internal .tree  {
+
+    overflow: auto;
+    max-height: 250px !important;
+
+}
+  
+.ngx-datepicker-calendar-container{
+    z-index: 2 !important;
+ }

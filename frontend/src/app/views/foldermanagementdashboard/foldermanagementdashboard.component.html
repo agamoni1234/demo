@@ -1,0 +1,391 @@
+
+<head>
+      
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <style>
+ button:hover {
+  box-shadow: 0 8px 12px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+.modal-footer {
+  padding: 2px 16px;
+  background-color:#8EB1BB;
+  color: white;
+}
+.modal-header {
+  padding: 2px 16px;
+  background-color: #8EB1BB;
+  color: white;
+}
+.modal-backdrop.in{
+  /* opacity : 0.0 !important; */
+}
+  </style>
+</head>
+
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+ </ngx-spinner>
+
+<div class="animated fadeIn" xmlns:padding-left="http://www.w3.org/1999/xhtml">
+  <div class="row" style="margin-top: -20px;margin-bottom: -20px; padding-left: 15px;">
+    <div class="col-md-8">
+      <h1 class="page-title" style="color: #5D5C61;padding-left: 2.5%;">
+          <b id="dashboard-name">Folder Management</b>
+      </h1>
+  </div>
+  </div>
+  <div class="tab-content" style="border:0px solid; padding-top: 2%;">
+
+
+    <div id="menu1" class="tab-pane fade in active">
+        
+        <div style="margin-left: 2%;padding:1%;" class="brand-card"  >
+
+        <div class="row ">
+
+          <div style="width: 50%;">
+            <div class="col-sm-4" style="width:25%;">
+              <label class="control-label" style="font-size: 15px;" >Select Source</label>
+            </div>
+            <div class="col-sm-4">
+              <select style="float:right;height:34px;" class="bs-select form-control ng-pristine ng-valid ng-touched"  [(ngModel)]="selectedSourceObject"  (change)="changeSource()" name="source"    required>
+              <option selected style="float:right;">Select Source</option>
+              <option style="float:right" *ngFor="let source of AllSource"  [ngValue]="source"  >{{source.name}}</option>
+              </select>
+            </div>   
+        
+            <div  style="margin-left:3%;margin-top: 1%;" class="col-md-12">
+        
+                <div *ngIf="sourcediv">
+                <div class="form-group" style="margin-left: -3%;">
+                    <label class="control-label">Source Result</label>
+                      <tree [tree]="SourceTree" (nodeMoved)="handleMoved($event)"  (nodeSelected)="sourceSelected($event)" (nodeExpanded)="handleExpandedSorce($event)" #treeComponentSource></tree>
+        
+                </div>
+                </div>
+            </div>
+          </div>
+
+
+          <div id="destination" class="col-md-6" style="display:none;">
+
+            <div class="row">
+            <div style="margin-left:3%;width:200px;"class="form-group" >
+                <label class="control-label">Select Destination</label>
+                <select style="float:right;height:30px" class="bs-select form-control ng-pristine ng-valid ng-touched"  [(ngModel)]="selectedDestinationObject"  (change)="changeDestination()" name="destination"    required>
+                <option selected style="float:right;">Select Destination</option>
+          
+                <option style="float:right" *ngFor="let destination of AllDestination"  [ngValue]="destination"  >{{destination.name}}</option>
+                </select>
+
+                
+            </div>
+            
+            <div style="margin-left:10%;margin-top: 4%;">
+
+              <button type="button" class="btn btn-primary" (click)="moveFile()" >Move</button>
+
+            </div>
+
+          </div>
+              
+          
+            <div  style="margin-left:3%;margin-top: 1%;" class="col-md-12">
+          
+                  <div *ngIf="destinationdiv">
+                  <div class="form-group">
+                      <label class="control-label">Destination Result</label>
+                        <tree [tree]="SourceTree1"  (nodeSelected)="destinationSelected($event)" (nodeExpanded)="handleExpandedDestination($event)" #treeComponentDestination></tree> 
+          
+          
+                  </div>
+                  
+                  </div>
+                  
+            </div>
+          
+          </div>
+        
+          <div style="margin-left:-1.5%;margin-top: 3%;"class="col-md-12">
+                  <div class ="row">
+                      <div  style="float:left">
+                          <button style="margin-left:2%;"type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCreateFile" >Create Folder</button>
+                          <button style="margin-left:2%;"type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalUploadFile" > Upload File</button>
+                          <button style="margin-left:2%;"type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalFileDetails" (click)="getFileDetails()">File Details</button>
+                          <button style="margin-left:2%;"type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalRename" >Rename File</button>
+                          <button style="margin-left:2%;"type="button" class="btn btn-primary" (click)="downloadFile()" >Download</button>
+                          <button style="margin-left:2%;"type="submit" class="btn btn-primary" (click)="deleteAwsFolder()" > Delete</button>
+
+                          <div class="container">
+                          
+                              <div class="modal fade" id="myModalCreateFile" role="dialog" >
+                                <div class="modal-dialog" >
+                                
+                                  <div class="modal-content">
+                                      <div style="height:40px;"class="modal-header">
+                                          <h4 style="text-align: center;margin-top: -1.2%;" class="modal-title">Create Folder</h4>
+                                          <span style="margin-top: -3.8%;" data-dismiss="modal" class="close">&times;</span>
+                                      </div>
+                                    <div class="modal-body">
+                                      <form style="padding:4%;" class="form-container" #formcreatefolder="ngForm" >
+                                          <div id="createFolder" class="row" style="margin-top:10px;width: auto;height:auto;max-height:100%">
+                                              <input  class="form-control input" type="text" [(ngModel)]="formcreatefolder.foldername" name="foldername" placeholder="enter folder name">
+                                              <button type="button" class="btn"style="margin-top:2%;background-color:#8EB1BB;" (click)="createAwsFolder(formcreatefolder)"><b>create</b></button>
+          
+                                                        
+                                          </div>
+                                          <div id="createFolderMsg" class="row" style="margin-top:10px;width: auto;height:auto;max-height:100%">
+                                            <span id="createFolderSpan" style= "font-weight:bold" ></span>
+                                          </div>
+                                      </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                              </div>
+
+
+                              <div class="modal fade" id="myModalUploadFile" role="dialog" >
+                                <div class="modal-dialog" >
+                                
+                                  <div class="modal-content">
+                                      <div style="height:40px;" class="modal-header">
+                                          <h4 style="text-align: center;margin-top: -1.2%;" class="modal-title">Upload File</h4>
+
+                                          <span  style="margin-top: -3.8%;"data-dismiss="modal" class="close">&times;</span>
+                                        </div>
+                                    <div class="modal-body">
+                                      <form class="form-container" #formDataEmail="ngForm" >
+                                          <div id="uploadFolder" class="row" style="margin-top:10px;width: auto;height:auto;max-height:100%">
+                                          <label style="margin-left: 4%;">
+                                          <input type="file" id="fileUpload" (change)="selectFile1($event)">
+                                          </label>
+                                          <button class="btn"style="margin-top:-2%;background-color:#8EB1BB;"[disabled]="!selectedFiles1" (click)="upload($event)">Upload</button>
+                                                    
+                                          </div>
+                                          <div id="uploadFolderMsg" class="row" style="margin-top:10px;width: auto;height:auto;max-height:100%">
+                                            <span id="uploadFolderSpan" style= "font-weight:bold; margin-left: 24%;" ></span>
+                                          </div>
+                                      </form>
+                                    </div>
+                                    <div style="height:40px;" class="modal-footer">
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                              </div>
+
+
+                              <div class="modal fade" id="myModal" role="dialog" >
+                                <div class="modal-dialog" >
+                                
+                                  <div class="modal-content">
+                                    <div style="height:40px;" class="modal-header">
+                                      <h4 style="text-align: center;margin-top: -1.2%;"class="modal-title">{{ fileNamePreview }}</h4>
+                                      <span  style="margin-top: -3.8%;"data-dismiss="modal" class="close">&times;</span>
+
+                                    </div>
+                                    <div class="modal-body">
+                                      <form class="form-container" #formDataEmail="ngForm" >
+                                          <div class="row" style="padding:2%;margin-top:10px;width: auto;height:auto;max-height:100%">
+                                                  {{ fileContentString }}
+                                          </div>
+                                      </form>
+                                    </div>
+                                    <div style="height:40px;" class="modal-footer">
+                                      <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> -->
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                              </div>
+
+
+                              <div class="modal fade" id="myModalFileDetails" role="dialog" >
+                                  <div class="modal-dialog" >
+                                  
+                                    <div class="modal-content">
+                                      <div style="height:40px;" class="modal-header">
+                                        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                                        <h4 style="text-align: center;margin-top: -1.2%;"class="modal-title">{{ fileNamePreview }}</h4>
+                                        <span  style="margin-top: -3.8%;"data-dismiss="modal" class="close">&times;</span>
+
+                                      </div>
+                                      <div class="modal-body">
+                                            <div id="fileDetails" class="row" style="padding:2%;margin-top:10px;width: auto;height:auto;max-height:100%">
+                                              
+                                              Location : {{ fileDetailsFileLoc }}
+                                              <br>
+                                              FileName : {{ fileDetailsFileName }}
+                                              <br>
+                                              Size : {{ fileDetailsFileSize }} 
+                                              <br>
+                                              Last Modified : {{ fileDetailsFileLastModified }}
+                                            </div>
+                                            <div id="fileDetailsMsg" class="row" style="margin-top:10px;width: auto;height:auto;max-height:100%">
+                                              <span id="fileDetailsSpan" style= "font-weight:bold; margin-left: 24%;" ></span>
+                                            </div>
+                                      </div>
+                                      <div  style="height:40px;" class="modal-footer">
+                                      </div>
+                                    </div>
+                                    
+                                  </div>
+                              </div>
+
+
+                              <div class="modal fade" id="myModalRename" role="dialog" >
+                                  <div class="modal-dialog" >
+                                  
+                                    <div class="modal-content">
+                                      <div  style="height:40px;"class="modal-header">
+                                        <h4 style="text-align: center;margin-top: -1.2%;" class="modal-title">Rename File : {{ fileNamePreview }}</h4>
+                                        <span  style="margin-top: -3.8%;"data-dismiss="modal" class="close">&times;</span>
+
+                                      </div>
+                                      <div class="modal-body">
+                                        <form class="form-container" #formDataRename="ngForm" >
+                                            <div id="renameFolder" class="row" style="padding:2%;margin-top:10px;width: auto;height:auto;max-height:100%">
+                                              <input  class="form-control input" type="text" [(ngModel)]="newFilerename" name="newFilerename" placeholder="enter new file name">
+                                              <button  type="button" class="btn"style="margin-top:2%;background-color:#8EB1BB;" (click)="renameAwsFile()"><b>Rename</b></button>
+                    
+                                            </div>
+                                            <div id="renameFolderMsg" class="row" style="margin-top:10px;width: auto;height:auto;max-height:100%">
+                                              <span id="renameFolderSpan" style= "font-weight:bold; margin-left: 24%;" ></span>
+                                            </div>
+                                        </form>
+                                      </div>
+                                      <div style="height:40px;" class="modal-footer">
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+
+
+                              <div class="modal fade" id="myModalDeleteFile" role="dialog" >
+                                  <div class="modal-dialog" >
+                                    <div class="modal-content">
+                                      <div style="height:40px;" class="modal-header">
+                                        <h4 style="text-align: center;margin-top: -1.2%;"class="modal-title">Delete Folder(Files)</h4>
+                                        <span  style="margin-top: -3.8%;"data-dismiss="modal" class="close">&times;</span>
+
+                                      </div>
+                                      <div class="modal-body">
+                                            <div id="deleteFolderMsg" class="row" style="margin-top:10px;width: auto;height:auto;max-height:100%">
+                                              <span id="deleteFolderSpan" style= "font-weight:bold; margin-left: 24%;" >Loading....</span>
+                                            </div>
+                                      </div>
+                                      <div  style="height:40px;" class="modal-footer">
+                                      </div>
+                                    </div>
+                                    
+                                  </div>
+                              </div>
+
+                              <div class="modal fade" id="myModalFileDownload" role="dialog" >
+                                <div class="modal-dialog" >
+                                  <div class="modal-content">
+                                    <div style="height:40px;" class="modal-header">
+                                      <h4 style="text-align: center;margin-top: -1.2%;"class="modal-title">Delete Folder(Files)</h4>
+                                      <span  style="margin-top: -3.8%;"data-dismiss="modal" class="close">&times;</span>
+
+                                    </div>
+                                    <div class="modal-body">
+                                          <div id="downloadFolderMsg" class="row" style="margin-top:10px;width: auto;height:auto;max-height:100%">
+                                            <span id="downloadFolderSpan" style= "font-weight:bold; margin-left: 24%;" >Loading....</span>
+                                          </div>
+                                    </div>
+                                    <div  style="height:40px;" class="modal-footer">
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                            </div>
+                              
+                          </div>
+                      </div>
+                      <br><br>
+                      
+                  </div>
+          </div>
+
+
+        </div>
+
+        </div>
+
+
+
+
+
+        
+                
+          
+          
+          
+        
+
+
+    </div>
+
+
+
+
+
+
+  </div>
+  
+  
+</div>
+

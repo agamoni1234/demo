@@ -1,0 +1,1 @@
+UPDATE `users` SET `passwordDigest`= '%s',`last_modified` = NOW() WHERE `temporary_uuid` = '%s';

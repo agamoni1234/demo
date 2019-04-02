@@ -1,0 +1,1 @@
+INSERT INTO `addMenu` (`dishname`,`price`) values ('%s','%s');

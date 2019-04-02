@@ -1,0 +1,1 @@
+INSERT INTO `servercredentials` (`ServerName`, `accessKey`, `appkey`, `appsecret`, `consumerKey`,`consumersecret`, `databaseName`, `databaseType`, `hosturl`, `className`, `password`, `port`, `reason`, `secretKey`, `username`, `servertype_id`, `user_id`,`getSwiftApiKey`) VALUES ( '%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s',%s,'%s','%s','%s','%s','%s','%s');
