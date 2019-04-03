@@ -11,3 +11,31 @@
 .brand-card{
     border: 0px solid #c8ced3;
 }
+@media screen and (min-width: 375px ) and (max-width: 430px ) {
+    .navbar-brand{
+        left: 30% !important;
+    }
+    .page-title{
+        font-size: 29px;
+    }
+    #select-source{
+        max-width: unset;
+    }
+    #source-dropdown{
+        float: none !important;
+        width: 150px;
+    }
+    #source-treeModel{
+        padding-top: 10%;
+    }
+    #fileDetailsBtn{
+        margin-top: 4%;
+    }
+    #fileRenameBtn{
+        margin-top: 4%;
+    }
+    #filedeleteBtn{
+        margin-top: 4%;
+    }
+    
+  }

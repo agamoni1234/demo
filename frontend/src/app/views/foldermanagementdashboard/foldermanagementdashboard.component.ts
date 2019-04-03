@@ -503,8 +503,8 @@ export class FoldermanagementdashboardComponent implements OnInit {
                         }
                     }); 
                 }
-                /* refresh modal */
-
+                
+                //create aws folder
                 createAwsFolder(formdate){
                     let _this = this;
                     _this.spinner.show();
@@ -523,8 +523,8 @@ export class FoldermanagementdashboardComponent implements OnInit {
                     var createFolderJson = JSON.parse(createFolder);
                     console.log(createFolderJson);
                     this.AppServiceObj.CreateAwsFolder(createFolderJson, function(returnObj) {
-                        $('#myModalCreateFile').hide(); 
-                        // document.getElementById('myModalCreateFile').style.display = "none";
+                        $('#myModalCreateFile').hide();
+                        $('.modal-backdrop.in').hide();
                         console.log("Return Object ",returnObj);
                         if(returnObj.status==1){
                             _this.spinner.hide();
@@ -539,30 +539,33 @@ export class FoldermanagementdashboardComponent implements OnInit {
 
                 selectFile1(event) {
                     this.selectedFiles1 = event.target.files;
-                    // console.log("File type is : "+this.selectedFiles1.item(0).type);
+                    console.log("Event Details is "+event.target.files[0]);
                     if(this.selectedFiles1.item(0).size >250000){
                     }
                     else{
                         var uploadedFile = event.target.files[0];
                         let fileReader = new FileReader();
+                        console.log("File Type "+ this.selectedFiles1.item(0).type);
                         if(this.selectedFiles1.item(0).type.includes("text/")){
                             fileReader.onload = (e) => {
                                 this.fileContent = fileReader.result;
-                                // console.log("Text File Details : "+this.fileContent);
                             }
                             fileReader.readAsText(uploadedFile);
                         }
-                        if(this.selectedFiles1.item(0).type =='image/png'){
+                        if(this.selectedFiles1.item(0).type =='image/png' || this.selectedFiles1.item(0).type =='image/jpg' || this.selectedFiles1.item(0).type =='image/jpeg' || this.selectedFiles1.item(0).type =='image/gif'){
                             fileReader.onload = (e) => {
                                 this.fileContent = fileReader.result;
-                                // console.log("Image File Details : "+this.fileContent);
                             }
                             fileReader.readAsDataURL(uploadedFile);
                         }
+                        else{
+                            fileReader.onload = (e) => {
+                                this.fileContent = fileReader.result;
+                            }
+                            fileReader.readAsBinaryString(uploadedFile);
+                        }
                     }
                 }
-                //refresh upload folder modal
-
                 //upload file in aws
                 upload(event) {
                     // this.spinner.show();
@@ -591,7 +594,8 @@ export class FoldermanagementdashboardComponent implements OnInit {
                         fileSize : this.selectedFiles1.item(0).size
                     }
                     this.AppServiceObj.AwsFileUpload(fileUploadJson,function(returnObj){
-                        $('#myModalUploadFile').hide(); 
+                        $('#myModalUploadFile').hide();
+                        $('.modal-backdrop.in').hide(); 
                         console.log(returnObj);
                         if(returnObj.status == true && returnObj.message == "File Uploaded Successfully"){
                             swal("","File is uploaded successfully","success");
@@ -854,6 +858,7 @@ export class FoldermanagementdashboardComponent implements OnInit {
                     
                     this.AppServiceObj.RenameAwsFile(renameFile,function(returnObj){
                         $("#myModalRename").hide();
+                        $('.modal-backdrop.in').hide();
                         console.log(returnObj);
                         if(returnObj.status==true && returnObj.message =="Rename is successful"){
                             swal("","File rename is successful","success");
@@ -895,6 +900,7 @@ export class FoldermanagementdashboardComponent implements OnInit {
                         if(returnObj.status==false){
                             _this.spinner.hide();
                             $("#myModalFileDetails").hide();
+                            $('.modal-backdrop.in').hide();
                             swal("","Something went wrong","error");
                         }
                        });

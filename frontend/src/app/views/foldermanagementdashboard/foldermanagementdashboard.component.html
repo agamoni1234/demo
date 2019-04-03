@@ -94,10 +94,10 @@
 
           <div style="width: 50%;">
             <div class="col-sm-4" style="width:25%;">
-              <label class="control-label" style="font-size: 15px;" >Select Source</label>
+              <label id="select-source" class="control-label" style="font-size: 15px;" >Select Source</label>
             </div>
             <div class="col-sm-4">
-              <select style="float:right;height:34px;" class="bs-select form-control ng-pristine ng-valid ng-touched"  [(ngModel)]="selectedSourceObject"  (change)="changeSource()" name="source"    required>
+              <select id="source-dropdown" style="float:right;height:34px;" class="bs-select form-control ng-pristine ng-valid ng-touched"  [(ngModel)]="selectedSourceObject"  (change)="changeSource()" name="source"    required>
               <option selected style="float:right;">Select Source</option>
               <option style="float:right" *ngFor="let source of AllSource"  [ngValue]="source"  >{{source.name}}</option>
               </select>
@@ -108,7 +108,7 @@
                 <div *ngIf="sourcediv">
                 <div class="form-group" style="margin-left: -3%;">
                     <label class="control-label">Source Result</label>
-                      <tree [tree]="SourceTree" (nodeMoved)="handleMoved($event)"  (nodeSelected)="sourceSelected($event)" (nodeExpanded)="handleExpandedSorce($event)" #treeComponentSource></tree>
+                      <tree id="folderTree" [tree]="SourceTree" (nodeMoved)="handleMoved($event)"  (nodeSelected)="sourceSelected($event)" (nodeExpanded)="handleExpandedSorce($event)" #treeComponentSource></tree>
         
                 </div>
                 </div>
@@ -132,7 +132,7 @@
             
             <div style="margin-left:10%;margin-top: 4%;">
 
-              <button type="button" class="btn btn-primary" (click)="moveFile()" >Move</button>
+              <!-- <button type="button" class="btn btn-primary" (click)="moveFile()" >Move</button> -->
 
             </div>
 
@@ -156,14 +156,15 @@
           </div>
         
           <div style="margin-left:-1.5%;margin-top: 3%;"class="col-md-12">
-                  <div class ="row">
+                  <div id="source-treeModel" class ="row">
                       <div  style="float:left">
                           <button style="margin-left:2%;"type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCreateFile" >Create Folder</button>
                           <button style="margin-left:2%;"type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalUploadFile" > Upload File</button>
-                          <button style="margin-left:2%;"type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalFileDetails" (click)="getFileDetails()">File Details</button>
-                          <button style="margin-left:2%;"type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalRename" >Rename File</button>
-                          <button style="margin-left:2%;"type="button" class="btn btn-primary" (click)="downloadFile()" >Download</button>
-                          <button style="margin-left:2%;"type="submit" class="btn btn-primary" (click)="deleteAwsFolder()" > Delete</button>
+                          <button style="margin-left:2%;"type="button" class="btn btn-primary" data-toggle="modal" id="fileDetailsBtn" data-target="#myModalFileDetails" (click)="getFileDetails()">File Details</button>
+                          <button style="margin-left:2%;"type="button" class="btn btn-primary" data-toggle="modal" id="fileRenameBtn" data-target="#myModalRename" >Rename File</button>
+                          <!-- <button style="margin-left:2%;"type="button" class="btn btn-primary" (click)="downloadFile()" >Download</button> -->
+                          <button style="margin-left:2%;"type="submit" class="btn btn-primary" id="filedeleteBtn" (click)="deleteAwsFolder()" > Delete</button>
+                    
 
                           <div class="container">
                           

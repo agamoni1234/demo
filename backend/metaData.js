@@ -139,10 +139,6 @@ router.post('/showBucketContain',VerifyToken,function(req,res){
     var secretKey = req.body.secretKey;
     var bucketName = req.body.bucketName;
     var folderName = req.body.folderName;
-    
-    console.log("Request is "+ req.body.bucketName);
-    console.log("Folder is : "+req.body.folderName);
-
     var s3=new Aws.S3({
       accessKeyId:accessKey,
       secretAccessKey:secretKey
@@ -209,6 +205,12 @@ router.post('/createFolderS3',VerifyToken,function(req,res){
       }
     });
 });
+
+function base64Encode(file) {
+  var body = fs.readFileSync(file);
+  return body.toString('base64');
+}
+
 
 //to upload files in existing folder
 router.post('/uploadFileS3',VerifyToken,function(req,res){
@@ -361,6 +363,9 @@ router.post('/downloadObject',VerifyToken,function(req,res){
     Bucket:bucketName,
     Key: filePath + fileName
   };
+  // var tempFileName = path.join('/Downloads',fileName);
+  // var tempFile = fs.createWriteStream(tempFileName);
+  // s3.getObject(downloadParam).createReadStream().pipe(tempFile);
   s3.getObject(downloadParam,function(err,data){
     if(err)
     {
