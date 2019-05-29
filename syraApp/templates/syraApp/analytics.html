@@ -1,0 +1,697 @@
+<!--{% load static %}-->
+
+    <html>
+    {% block content %}
+        <head>
+            <title>Analytics|Syra </title>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+            <script src="https://code.highcharts.com/highcharts.js"></script>
+            <script src="https://code.highcharts.com/modules/series-label.js"></script>
+            <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+            <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+            <script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
+            <script src="https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.js"></script>
+            <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+            <script src="https://code.highcharts.com/maps/modules/data.js"></script>
+            <script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
+            <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        </head>
+        <body>
+            <p> Analytics </p>
+            <div class="container" style="background: #eee;">
+                <div class="row">
+                    <div class="col-md-6" >
+                        <div class="brand-card" id="intentContainer" style="min-width: 500px; height: 400px; margin: 0 auto">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="linksContainer" style="min-width: 500px; height: 400px; margin: 0 auto">
+                        </div>
+                    </div>
+                </div>
+                <div class ="row" style="margin-top:5%">
+                    <div claas ="col-md-6"> 
+                        <div id= "queryContainer" style="min-width: 500px; height: 400px; margin: 0 auto">
+                        </div>
+                    </div>
+                    <div claas ="col-md-6"> 
+                        <div id= "botResponsecontainer" style="min-width: 310px;height: 400px;max-width: 600px;margin: 0px auto;overflow: hidden;margin-left: 2px;">
+                        </div>
+                    </div>
+                </div>
+                <div class ="row" style="margin-top:1%">
+                    <div claas ="col-md-6"> 
+                        <div id= "regionContainer" style="min-width: 500px; height: 500px; margin: 0 auto">
+                        </div>
+                    </div>
+                    <div class="col=md-6">
+                        <div id= "timeContainer" style="min-width: 500px; height: 500px; margin: 0 auto">
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row" style="margin-top: 5%">
+                    <div id = "linkSessionContainer" style="min-width: 320px; max-width: 800px; margin: 0 auto;">
+                    </div>
+                </div> -->
+            </div>
+            <script>  
+            getIntents();
+            getClickedLinks();
+            getQuestionsAsked();   
+            getChatterDemographic();
+            getBotResponse();
+            getTimeAnalysis();
+            getLinksSession();
+            function getIntents(){
+                var intentData = {{intentData|safe}};
+                Highcharts.chart('intentContainer', {
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: 'Most Common Intents',
+                        style: {
+                            color: '#8d3052',
+                            fontWeight: 'bold',
+                            fontSize: '20px'
+                        }
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'top',
+                        x: -40,
+                        y: 80,
+                        floating: true,
+                        borderWidth: 1,
+                        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                        shadow: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        title: {
+                            text: 'Top 10 Questions Asked',
+                            style: {
+                                color: '#3c1414',
+                                fontWeight: 'bold',
+                                fontSize: '16px'
+                            }
+                        },
+                        labels: {
+                            style: {
+                                fontSize: '13px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Count of Intents',
+                            style: {
+                                color: '#3c1414',
+                                fontWeight: 'bold',
+                                fontSize: '16px'
+                            }
+                        }
+                    },
+                    tooltip: {
+                        pointFormat: 'Intents Count: <b>{point.y}</b>'
+                    },
+                    plotOptions: {
+                        series: {
+                            pointWidth: 20,
+                            cursor: 'pointer',
+                            point: {
+                                events: {
+                                    click: function () {
+                                    }
+                                }
+                            }
+                        },
+                        column: {
+                            pointPadding: 0,
+                            borderWidth: 0
+                        }
+                    },
+                    series: [{
+                    name: 'Intents',
+                    data: intentData,
+                    color: {
+                        linearGradient: {
+                            x1: 0,
+                            x2: 0,
+                            y1: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, '#8d3052'],
+                            [1, '#b296af']
+                        ]
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+                        y: 10,
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+                });
+            }
+            function getClickedLinks(){
+                var linkData = [];
+                $.ajax({
+                        url: 'view-links',
+                        method: 'GET',
+                        crossDomain: true,
+                        dataType: 'json',
+                        success: function (data) {
+                                linkData = data["linksData"];
+                                var pieColors = (function () {
+                                var colors = [],
+                                    base = "#b296af", 
+                                    // base = Highcharts.getOptions().colors[0],
+                                    i;
+
+                                for (i = 0; i < 10; i += 1) {
+                                    colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());
+                                }
+                                return colors;
+                            }());
+
+                            Highcharts.chart('linksContainer', {
+                                    chart: {
+                                        plotBackgroundColor: null,
+                                        plotBorderWidth: null,
+                                        plotShadow: false,
+                                        type: 'pie'
+                                    },
+                                    title: {
+                                        text: 'Most Clicked Links',
+                                        style: {
+                                            color: '#8d3052',
+                                            fontWeight: 'bold',
+                                            fontSize: '24px'
+                                        }
+                                    },
+                                    subtitle: {
+                                        text: 'Click chart to see details',
+                                        style: {
+                                            color: '#333333',
+                                            fontWeight: 'normal',
+                                            fontSize: '12px'
+                                        }
+                                    },
+                                    credits: {
+                                        enabled: false
+                                    },
+                                    tooltip: {
+                                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                                    },
+                                    plotOptions: {
+                                        pie: {
+                                            allowPointSelect: true,
+                                            cursor: 'pointer',
+                                            colors: pieColors,
+                                            dataLabels: {
+                                                enabled: true,
+                                                format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                                                distance: -50,
+                                                filter: {
+                                                    property: 'percentage',
+                                                    operator: '>',
+                                                    value: 4
+                                                }
+                                            }
+                                        }
+                                    },
+                                    series: [{
+                                        name: 'Share',
+                                        data: linkData,
+                                        color: {
+                                            radialGradient: { cx: 0.5, cy: 0.5, r: 0.5 },
+                                            stops: [
+                                            [0, '#8d3052'],
+                                            [1, '#b296af']
+                                            ]
+                                        }
+                                    }]
+                            });
+
+                        }
+                });
+            }
+            function getQuestionsAsked(){
+                var questionData ;
+                $.ajax({
+                    url: 'view-questions',
+                    method: 'GET',
+                    crossDomain: true,
+                    dataType: 'json',
+                    success: function (data) {
+                        // console.log(data)
+                        questionData = data["questionData"]
+                        Highcharts.chart('queryContainer', {
+                            chart: {
+                                type: 'bar'
+                            },
+                            title: {
+                                text: 'Most Common Questions Asked',
+                                style: {
+                                    color: '#8d3052',
+                                    fontWeight: 'bold',
+                                    fontSize: '20px'
+                                }
+                            },
+                            subtitle: {
+                                // text: 'Click chart to see details',
+                                style: {
+                                    color: '#333333',
+                                    fontWeight: 'normal',
+                                    fontSize: '12px'
+                                }
+                            },
+                            credits: {
+                                enabled: false
+                            },
+                            legend: {
+                                layout: 'vertical',
+                                align: 'right',
+                                verticalAlign: 'top',
+                                x: -40,
+                                y: 80,
+                                floating: true,
+                                borderWidth: 1,
+                                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                                shadow: true
+                            },
+                            xAxis: {
+                                type: 'category',
+                                title: {
+                                    text: 'Top 10 Questions Asked',
+                                    style: {
+                                        color: '#3c1414',
+                                        fontWeight: 'bold',
+                                        fontSize: '16px'
+                                    }
+                                },
+                                labels: {
+                                    style: {
+                                        fontSize: '13px',
+                                        fontFamily: 'Verdana, sans-serif'
+                                    }
+                                }
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: 'Count',
+                                    style: {
+                                        color: '#3c1414',
+                                        fontWeight: 'bold',
+                                        fontSize: '16px'
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                pointFormat: 'Questions Asked: <b>{point.y}</b> times'
+                            },
+                            plotOptions: {
+                                series: {
+                                    pointWidth: 20,
+                                    cursor: 'pointer',
+                                    point: {
+                                        events: {
+                                            click: function () {
+                                                
+                                            }
+                                        }
+                                    }
+                                },
+                                column: {
+                                    pointPadding: 0,
+                                    borderWidth: 0
+                                }
+                            },
+                            series: [{
+                                name: 'UserQuery',
+                                data: questionData,
+                                color: {
+                                    linearGradient: {
+                                        x1: 0,
+                                        x2: 0,
+                                        y1: 0,
+                                        y2: 1
+                                    },
+                                    stops: [
+                                        [0, '#8d3052'],
+                                        [1, '#b296af']
+                                    ]
+                                },
+                                dataLabels: {
+                                    enabled: true,
+                                    rotation: -90,
+                                    color: '#FFFFFF',
+                                    align: 'right',
+                                    y: 10,
+                                    style: {
+                                        fontSize: '13px',
+                                        fontFamily: 'Verdana, sans-serif'
+                                    }
+                                }
+                            }]
+            
+                        });
+                    }
+                })
+            }
+
+            function getChatterDemographic(){
+                $.ajax({
+                    url: 'view-regions',
+                    method: 'GET',
+                    crossDomain: true,
+                    dataType: 'json',
+                    success: function (data) {
+                        var regionData = data["data"];
+                        console.log(data);
+                        Highcharts.setOptions({
+                            plotOptions: {
+                                series: {
+                                    dataLabels: {
+                                        enabled: true,
+                                        formatter: function () {
+                                            if (this.point.value > 0)
+                                                return this.point.name
+                                        }
+                                    },
+                                    point: {
+                                        events: {
+                                            click: function (e) {
+                                            }
+                                        }
+                                    }
+                                },
+                                map: {
+                                    states: {
+                                        hover: {
+                                            color: '#EEDD66'
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                        $('#regionContainer').highcharts('Map', {
+                            chart: {
+                                width: 650,
+                                height: 500
+                            },
+                            colorAxis: {
+                                min: 1,
+                                max: 500,
+                                type: 'logarithmic',
+                                minColor: '#8c0c09',
+                                maxColor: '#11e056',
+
+                            },
+                            title: {
+                                text: "Chatter's Demographics on Locations",
+                                style: {
+                                    color: '#8d3052',
+                                    fontWeight: 'bold',
+                                    fontSize: '20px'
+                                }
+                            },
+                            subtitle: {
+                                text: 'Click chart to see details',
+                                style: {
+                                    color: '#333333',
+                                    fontWeight: 'normal',
+                                    fontSize: '12px'
+                                }
+                            },
+                            credits: {
+                                enabled: false
+                            },
+                            series: [{
+                                name: 'Countries',
+                                mapData: Highcharts.maps['custom/world']
+                            }, {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                nullColor: '#c6bcc5',
+                                color: '#a9d0e8',
+                                mapData: Highcharts.maps['custom/world'],
+                                name: 'Question asked from ',
+                                joinBy: ['iso-a2', 'code'],
+                                data: regionData,
+                                minSize: 8,
+                                maxSize: 50,
+                                tooltip: {
+                                    valueSuffix: ' times'
+                                }
+                            }]
+                        });
+                    }
+                })
+            }
+            function getBotResponse(){
+                $.ajax({
+                    url: 'view-botresponse',
+                    method: 'GET',
+                    crossDomain: true,
+                    dataType: 'json',
+                    success: function(data){
+                        var botResponseData = data["data"];
+                        console.log(data);
+                        Highcharts.setOptions({
+                        colors: Highcharts.map(["#b296af","#aaafb5"], function (color) {
+                            return {
+                                radialGradient: {
+                                    cx: 0.5,
+                                    cy: 0.3,
+                                    r: 0.7
+                                },
+                                stops: [
+                                    [0, color],
+                                    [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+                                ]
+                            };
+                        })
+                    });
+                        Highcharts.chart('botResponsecontainer', {
+                            chart: {
+                                plotBackgroundColor: null,
+                                plotBorderWidth: 0,
+                                plotShadow: false
+                            },
+                            credits: {
+                                enabled: false
+                            },
+                            title: {
+                                text: 'Analysis of Chatbot Response',
+                                style: {
+                                    color: '#8d3052',
+                                    fontWeight: 'bold',
+                                    fontSize: '20px'
+                                }
+                            },
+                            tooltip: {
+                                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                            },
+                            plotOptions: {
+                                pie: {
+                                    dataLabels: {
+                                        enabled: true,
+                                        distance: -50,
+                                        style: {
+                                            fontWeight: 'bold',
+                                            color: 'white'
+                                        }
+                                    },
+                                    startAngle: -90,
+                                    endAngle: 90,
+                                    center: ['50%', '75%'],
+                                    size: '110%'
+                                }
+                            },
+                            series: [{
+                                type: 'pie',
+                                name: 'Bot Response',
+                                innerSize: '50%',
+                                data: botResponseData
+                            }]
+                        });
+                    }
+                })
+            }
+            
+
+            function getTimeAnalysis(){
+                var timedata ;
+                $.ajax({
+                    url: 'view-timeanalytics',
+                    method: 'GET',
+                    crossDomain: true,
+                    dataType: 'json',
+                    success: function(data){
+                        var timedata = data["data"];
+                        Highcharts.chart('timeContainer', {
+                            chart: {
+                                zoomType: 'x'
+                            },
+                            title: {
+                                text: 'Day Analysis',
+                                style: {
+                                    color: '#8d3052',
+                                    fontWeight: 'bold',
+                                    fontSize: '24px'
+                                }
+                            },
+                            subtitle: {
+                                text: 'Click chart to see details',
+                                style: {
+                                    color: '#333333',
+                                    fontWeight: 'normal',
+                                    fontSize: '12px'
+                                }
+                            },
+                            credits: {
+                                enabled: false
+                            },
+                            xAxis: {
+                                type: 'datetime',
+                                title: {
+                                    text: 'Dates to ask questions ',
+                                    style: {
+                                        color: '#3c1414',
+                                        fontWeight: 'bold',
+                                        fontSize: '12px'
+                                    }
+                                }
+                            },
+                            yAxis: {
+                                min:0,
+                                title: {
+                                    text: 'Number of times question asked ',
+                                    style: {
+                                        color: '#3c1414',
+                                        fontWeight: 'bold',
+                                        fontSize: '12px'
+                                    }
+                                }
+                            },
+                            legend: {
+                                enabled: false
+                            },
+                            plotOptions: {
+                                area: {
+                                    fillColor: {
+                                        linearGradient: {
+                                            x1: 0,
+                                            y1: 0,
+                                            x2: 0,
+                                            y2: 1
+                                        },
+                                        stops: [
+                                            [0, Highcharts.getOptions().colors[0]],
+                                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                        ]
+                                    },
+                                    marker: {
+                                        radius: 2
+                                    },
+                                    lineWidth: 1,
+                                    states: {
+                                        hover: {
+                                            lineWidth: 1
+                                        }
+                                    },
+                                    cursor: 'pointer',
+                                    point: {
+                                        events: {
+                                        }
+                                    },
+                                    threshold: null
+                                }
+                            },
+                            series: [{
+                                type: 'area',
+                                name: 'Questions asked in a day',
+                                data: timedata
+                            }]
+                        });
+                    }
+                });
+                
+        }
+        
+        function getLinksSession(){
+            var sessionData ;
+            $.ajax({
+                url: 'view-linksessions',
+                method: 'POST',
+                crossDomain: true,
+                dataType: 'json',
+                success: function(data){
+                    sessionData = data["sessionData"];
+                    console.log(sessionData);
+                    Highcharts.chart('linkSessionContainer', {
+                        chart: {
+                            type: 'packedbubble',
+                            height: '100%'
+                        },
+                        title: {
+                            text: 'Carbon emissions around the world (2014)'
+                        },
+                        tooltip: {
+                            useHTML: true,
+                            pointFormat: '<b>{point.name}:</b> {point.value}m CO<sub>2</sub>'
+                        },
+                        plotOptions: {
+                            packedbubble: {
+                                minSize: '30%',
+                                maxSize: '120%',
+                                zMin: 0,
+                                zMax: 1000,
+                                layoutAlgorithm: {
+                                    splitSeries: false,
+                                    gravitationalConstant: 0.02
+                                },
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.name}',
+                                    filter: {
+                                        property: 'y',
+                                        operator: '>',
+                                        value: 250
+                                    },
+                                    style: {
+                                        color: 'black',
+                                        textOutline: 'none',
+                                        fontWeight: 'normal'
+                                    }
+                                }
+                            }
+                        },
+                        series: sessionData
+                    });
+                }
+            });
+        }
+        </script>
+        </body>
+    {% endblock content %}
+    </html>

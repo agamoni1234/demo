@@ -1,0 +1,21 @@
+DateTime || IpAddress || Questions || Answers || Intents || Entites || Session
+-----------------------------------------------------------------------------
+2019-05-20 09:56 || 127.0.0.1 || hi || Hi, how can I help you? || greeting || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6j
+2019-05-20 09:56 || 127.0.0.1 || hi || Hi, how can I help you? || greeting || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6j
+2019-05-20 09:56 || 127.0.0.1 || ok ||  || fallback ||  || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6j
+2019-05-20 09:56 || 127.0.0.1 || ok || Sorry, I did not understand your query. Type 'help' if you need assistance. || fallback || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6j
+2019-05-20 09:56 || 127.0.0.1 || how are you || Are you sure you wanted to say this? || frustration || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6j
+2019-05-20 09:56 || 127.0.0.1 || help me || I can answer all question related to this project . || help || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6j
+2019-05-20 10:01 || 192.168.0.222 || hi || Hi, how can I help you? || greeting || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6k
+2019-05-20 10:01 || 192.168.0.222 || how are you || Are you sure you wanted to say this? || frustration || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6k
+2019-05-20 10:02 || 192.168.0.222 || tell me about yourself ||  || fallback ||  || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6k
+2019-05-20 10:02 || 192.168.0.222 || tell me about yourself || Sorry, I did not understand your query. Type 'help' if you need assistance. || fallback || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6k
+2019-05-20 10:02 || 192.168.0.222 || hello || Hi, how can I help you? || greeting || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6k
+2019-05-20 10:03 || 192.168.0.222 || hello || Hi, how can I help you? || greeting || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6k
+2019-05-20 10:17 || 192.168.0.222 || hello || Hi, how can I help you? || greeting || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6j
+2019-05-20 10:17 || 192.168.0.222 || hello || Hi, how can I help you? || greeting || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6d
+2019-05-20 10:17 || 192.168.0.222 || hello || Hi, how can I help you? || greeting || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6b
+2019-05-20 10:18 || 192.168.0.222 || hello || Hi, how can I help you? || greeting || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6c
+2019-05-20 10:18 || 192.168.0.222 || hello || Hi, how can I help you? || greeting || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c69
+2019-05-20 10:18 || 192.168.0.222 || hello || Hi, how can I help you? || greeting || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6e
+2019-05-20 10:20 || 192.168.0.222 || hello || Hi, how can I help you? || greeting || [] || 15e3f26f-ddc8-4150-bb76-b4d8655b6c6e
